@@ -25,8 +25,6 @@ import java.util.HashMap;
 public class Main {
     public static void main(String[] args) {
             
-             
-       
         
         //AMERICA
         //Peru
@@ -346,6 +344,21 @@ public class Main {
                 System.out.println(pelicula.getTituloPelicula()); 
             }
             
+        System.out.println("\n4. Ordena los países por número de sus ciudades en orden descendente.");
+        List<Pais> paisesOrdenadosPorNumeroDeCiudades = paises.stream()
+        .sorted((p1, p2) -> Integer.compare(p2.getCiudades().size(), p1.getCiudades().size())).collect(Collectors.toList());
+   
+        for (Pais pais : paisesOrdenadosPorNumeroDeCiudades) {
+        System.out.println("País: " + pais.getNombrePais() + ",ciudades registradas: " + pais.getCiudades().size());
+        }
         
+        System.out.println("\n5. Ordena los países por número de población en orden ascendente.");
+        List<Pais> ordenaPaises = paises.stream().sorted(Comparator.comparing(Pais::getNroPoblacion)).collect(Collectors.toList());
+        
+        for(Pais pais: ordenaPaises){
+            System.out.println(pais.getNombrePais()+" tiene "+ pais.getNroPoblacion()+" de población.");
+        }
+                
+   
     }
 }
